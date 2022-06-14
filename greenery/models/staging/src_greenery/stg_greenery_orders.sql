@@ -3,7 +3,7 @@
 }}
 
 select
-    order_id as id,
+    order_id,
     promo_id,
     user_id, 
     address_id,
