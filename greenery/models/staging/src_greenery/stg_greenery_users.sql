@@ -3,7 +3,7 @@
 }}
 
 select
-    user_id as id,
+    user_id,
     first_name,
     last_name,
     email,

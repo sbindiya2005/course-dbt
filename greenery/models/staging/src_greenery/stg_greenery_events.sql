@@ -4,7 +4,7 @@
 
 
 select
-    event_id as id,
+    event_id,
     session_id, 
     user_id,
     event_type,

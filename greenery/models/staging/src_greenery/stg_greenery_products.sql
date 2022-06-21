@@ -3,8 +3,8 @@
 }}
 
 select
-    product_id as id,
-    name,
+    product_id,
+    name as product_name,
     price,
     inventory
 

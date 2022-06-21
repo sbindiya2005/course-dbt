@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: int_user_orders
+    description: Intermediary table of User shows last order date,first order date, total amount spent, days since last order,unique item ordered and many 
+    columns:
+      - name: user_id
+        tests:
+          - not_null
+      - name: avg_order_cost_lifetime
+        tests:
+          - not_null
+          - positive_values
+      - name: total_orders_lifetime
+        tests:
+          - not_null
+          - positive_values
+      - name: total_spends_lifetime
+        test: 
+          - not_null
+
+  - name: dim_users
+    description: Enriched table of users and addresses
+    columns:
+      - name: address_id 
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+
+  - name: int_user_sessions_per_product
+    description: Enriched table of events with product name
+    columns:
+      - name: session_id 
+        tests:
+          - not_null
+      - name: user_id 
+        tests:
+          - not_null
+  
+  - name: fct_shipping_services
+    description: Aggregated Orders by shipping services.
+    columns:
+      - name: order_total
+        tests:
+          - not_null
+
+
+  - name: int_Promo_discount
+    description: It shows per day Order_Total, total_discount, total number of orders, total number of products sold and  Will assist for further promo continuation analysis
+
+  - name: fct_product_popularity
+    description: Aggregated table for product analysis
+
+  - name: int_event_sessions
+    description: Each product sessions.
+
+
+  - name: int_page_view
+    description: Aggregated product table with event type 

@@ -3,7 +3,7 @@
 }}
 
 select
-    order_id as id,
+    order_id,
     product_id, 
     quantity
 

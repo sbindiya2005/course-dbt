@@ -3,8 +3,8 @@
 }}
 
 select
-    promo_id as id,
-    discount,
-    status
+    promo_id,
+    discount as promo_discount,
+    status as promo_status
 
 from {{ source( 'greenery', 'promos' ) }}

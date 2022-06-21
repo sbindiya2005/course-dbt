@@ -16,7 +16,7 @@ sources:
               - unique
               - not_null
 
-          - name: name
+          - name: product_name
             description: Name of the product.
 
           - name: price

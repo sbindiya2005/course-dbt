@@ -18,11 +18,10 @@ FROM order_by_hour
 
 3. On average, how long does an order take from being placed to being delivered?
 
-WITH base AS (
-    SELECT DATE_TRUNC('hour',created_at) AS Hour,
-    COUNT(DISTINCT order_id) AS num_orders
-    FROM dbt_bindiya_s.stg_greenery_orders
-    GROUP BY 1
-)
-SELECT AVG(num_orders)
-FROM base
+SELECT order_id,
+        created_at,
+        delivered_at,
+        delivered_at - created_at AS difference
+FROM orders
+WHERE delivered_at IS NOT NULL
+

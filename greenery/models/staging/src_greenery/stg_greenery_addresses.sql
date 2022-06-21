@@ -3,8 +3,8 @@
 }} 
 
 select
-    address_id as id,
-    address as delivery_address,
+    address_id,
+    address,
     zipcode,
     state,
     country
