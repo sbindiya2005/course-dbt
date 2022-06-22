@@ -13,7 +13,7 @@ SELECT
   A.state,
   A.country,
   A.zipcode
-FROM {{ ref('stg_greenery_users') }} as U
-LEFT JOIN {{ ref('stg_greenery_addresses') }} as A 
+FROM {{ref('stg_greenery_users')}} as U
+LEFT JOIN {{ref('stg_greenery_addresses')}} as A 
   ON U.address_id = A.address_id
   
