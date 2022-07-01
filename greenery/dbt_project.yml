@@ -38,5 +38,5 @@ models:
 
   post-hook:
     - "GRANT SELECT on {{ this }} TO reporting"
-  on-run-end:
-    - "GRANT USAGE ON SCHEMA {{ schema }} TO reporting"
+on-run-end:
+  - "GRANT USAGE ON SCHEMA {{ schema }} TO reporting"
