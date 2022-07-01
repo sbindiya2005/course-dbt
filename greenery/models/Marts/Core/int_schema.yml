@@ -28,6 +28,9 @@ models:
       - name: user_id
         tests:
           - not_null
+          
+  - name: dim_orders
+    description: Enriched table for Orders
 
   - name: int_user_sessions_per_product
     description: Enriched table of events with product name

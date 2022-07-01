@@ -1,13 +1,13 @@
 version: 2
 
 models:
-  - name: stg_greenery__addresses
+  - name: stg_greenery_addresses
     description: Location (delivery) information associated with greenery's users (GDPR)
 
-  - name: stg_greenery__events
+  - name: stg_greenery_events
     description: Greenery's users site sessions and events
   
-  - name: stg_greenery__orders
+  - name: stg_greenery_orders
     description: Greenery's orders, deliveries and shipping
     columns:
       - name: order_id
@@ -15,16 +15,16 @@ models:
         - not_null
         - unique
 
-  - name: stg_greenery__order_items
+  - name: stg_greenery_order_items
     description: Items per order (including quantity) 
   
-  - name: stg_greenery__products
+  - name: stg_greenery_products
     description: Greenery's products and inventory
 
-  - name: stg_greenery__promos
+  - name: stg_greenery_promos
     description: Greenery's past and current promotions
   
-  - name: stg_greenery__users
+  - name: stg_greenery_users
     description: Demographic information and contact details for greenery's users (GDPR)
     columns:
       - name: user_id
