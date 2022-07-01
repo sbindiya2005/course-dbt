@@ -36,7 +36,7 @@ models:
     example:
       +materialized: view
 
-post-hook:
-    -"GRANT SELECT on {{ this }} TO reporting"
-on-run-end:
-  -"GRANT USAGE ON SCHEMA {{ schema }} TO reporting"
+  post-hook:
+    - "GRANT SELECT on {{ this }} TO reporting"
+  on-run-end:
+    - "GRANT USAGE ON SCHEMA {{ schema }} TO reporting"
