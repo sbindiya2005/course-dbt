@@ -1,20 +1,13 @@
 {{
   config(materialized='table')
 }}
-
-{% set event_types = dbt_utils.get_column_values(table=ref('stg_greenery_events'), column='event_type') %}
-
 select session_id , user_id, product_name,
- min(created_at) session_start,
- max(created_at) session_stop,
+  min(created_at) session_start,
+  max(created_at) session_stop,
+  count(distinct case when event_type = 'page_view' then 1 else 0 end )as nb_page_view,
+  count(distinct case when event_type = 'add_to_cart' then 1 else 0  end )as nb_add_to_cart,
+  count(distinct case when event_type = 'checkout' then 1 else 0 end )as  nb_checkout,
+  count(distinct case when event_type = 'package_shipped' then 1 end )as nb_package_shipped
 
- 
-
- count(distinct case when event_type = 'page_view' then 1  end ) page_view,
- count(distinct case when event_type = 'add_to_cart' then 1  end ) add_to_cart,
- count(distinct case when event_type = 'checkout' then 1 end ) checkout,
- count(distinct case when event_type = 'package_shipped' then 1 end ) package_shipped
-
-FROM {{ ref('int_event_sessions') }} e
-
+from dbt_bindiya_s.int_event_sessions
 group by 1,2,3 
