@@ -42,6 +42,12 @@ models:
         tests:
           - not_null
   
+  - name: fct_conversion_rate
+    description: Calculates the overall conversion rate by session id 
+    
+  - name: fct_conversion_rate_by_product
+    description: Calculates the conversion rate by product
+
   - name: fct_shipping_services
     description: Aggregated Orders by shipping services.
     columns:

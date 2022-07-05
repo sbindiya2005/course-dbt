@@ -1,7 +1,12 @@
 What is our user repeat rate?
 
-SELECT 
-SUM(CASE WHEN repeats > 1 THEN 1 ELSE 0 END)/sum(count_users) as repeat_rate
-FROM (SELECT user_id, count(order_id) as repeats, count(distinct user_id) as count_users
-FROM orders
-GROUP BY user_id
+with user_order_count as (
+select user_id, count(distinct order_id)as num_order
+from dbt_bindiya_s.dim_orders
+group by 1
+order by 2 desc)
+select sum(case when num_order>1 then 1 else 0 end),
+sum(1),
+sum(case when num_order>1 then 1 else 0 end)/sum(1)
+from user_order_count;
+
