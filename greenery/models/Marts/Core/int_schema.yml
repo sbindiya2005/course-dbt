@@ -67,4 +67,7 @@ models:
 
 
   - name: int_page_view
-    description: Aggregated product table with event type 
+    description: Aggregated product table with event type
+
+  - name: fct_product_funnel
+    description: Product Funnel based on event type 
