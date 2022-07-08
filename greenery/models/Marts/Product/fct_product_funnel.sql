@@ -1,7 +1,7 @@
 {{
   config(
-    materialized='table'
-  )
+    materialized='incremental',
+    )
 }}
 
 with session_counts as(
@@ -12,10 +12,9 @@ with session_counts as(
     from dbt_bindiya_s.int_event_sessions
     group by session_id
 )
-    select  
-            sum(pv) / count(distinct session_id) as page_views_pct,
-            sum(atc)::numeric / sum(pv)::numeric as add_to_cart_pct,
-            sum(ckt)::numeric / (select sum(atc))::numeric as checkout_pct
+    select  round((sum(pv)::numeric / count(session_id)),2)*100 as page_views_pct,
+            round((sum(atc)::numeric / sum(pv)::numeric),2)*100 as add_to_cart_pct,
+            round((sum(ckt)::numeric / (select sum(atc))::numeric),2)*100 as checkout_pct
     from session_counts
 
 
